@@ -56,22 +56,22 @@ public class UserControllerTests {
 
     @Test
     public void createWithEmptyEmailTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultUser.toBuilder().
-                email(null)
+        assertEquals(500, sendPostRequest(defaultUser.toBuilder()
+                .email(null)
                 .build()).statusCode());
     }
 
     @Test
     public void createWithEmptyLoginTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultUser.toBuilder().
-                login(null)
+        assertEquals(500, sendPostRequest(defaultUser.toBuilder()
+                .login(null)
                 .build()).statusCode());
     }
 
     @Test
     public void createWithEmptyNameTest() throws IOException, InterruptedException {
-        HttpResponse<String> response = sendPostRequest(defaultUser.toBuilder().
-                name(null)
+        HttpResponse<String> response = sendPostRequest(defaultUser.toBuilder()
+                .name(null)
                 .build());
 
         String expectedName = defaultUser.getLogin();
