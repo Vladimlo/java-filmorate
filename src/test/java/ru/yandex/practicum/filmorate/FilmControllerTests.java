@@ -52,33 +52,33 @@ public class FilmControllerTests {
 
     @Test
     public void createTest() throws IOException, InterruptedException {
-        assertEquals(200, sendPostRequest(defaultFilm).statusCode());
+        assertEquals(201, sendPostRequest(defaultFilm).statusCode());
     }
 
     @Test
     public void createWithEmptyNameTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultFilm.toBuilder()
+        assertEquals(400, sendPostRequest(defaultFilm.toBuilder()
                 .name(null)
                 .build()).statusCode());
     }
 
     @Test
     public void createWithLongDescriptionTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultFilm.toBuilder()
+        assertEquals(400, sendPostRequest(defaultFilm.toBuilder()
                 .description("a".repeat(201))
                 .build()).statusCode());
     }
 
     @Test
     public void createWithOldReleaseDateTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultFilm.toBuilder()
+        assertEquals(400, sendPostRequest(defaultFilm.toBuilder()
                 .releaseDate(LocalDate.of(1895, 12, 27))
                 .build()).statusCode());
     }
 
     @Test
     public void createWithZeroDurationTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultFilm.toBuilder()
+        assertEquals(400, sendPostRequest(defaultFilm.toBuilder()
                 .duration(0)
                 .build()).statusCode());
     }

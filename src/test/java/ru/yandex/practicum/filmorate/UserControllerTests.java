@@ -51,19 +51,19 @@ public class UserControllerTests {
 
     @Test
     public void createTest() throws IOException, InterruptedException {
-        assertEquals(200, sendPostRequest(defaultUser).statusCode());
+        assertEquals(201, sendPostRequest(defaultUser).statusCode());
     }
 
     @Test
     public void createWithEmptyEmailTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultUser.toBuilder()
+        assertEquals(400, sendPostRequest(defaultUser.toBuilder()
                 .email(null)
                 .build()).statusCode());
     }
 
     @Test
     public void createWithEmptyLoginTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultUser.toBuilder()
+        assertEquals(400, sendPostRequest(defaultUser.toBuilder()
                 .login(null)
                 .build()).statusCode());
     }
@@ -77,13 +77,13 @@ public class UserControllerTests {
         String expectedName = defaultUser.getLogin();
         String actualName = objectMapper.readValue(response.body(), User.class).getName();
 
-        assertEquals(200, response.statusCode());
+        assertEquals(201, response.statusCode());
         assertEquals(expectedName, actualName);
     }
 
     @Test
     public void createWithFutureBirthdayTest() throws IOException, InterruptedException {
-        assertEquals(500, sendPostRequest(defaultUser.toBuilder()
+        assertEquals(400, sendPostRequest(defaultUser.toBuilder()
                 .birthday(LocalDate.now().plusDays(1))
                 .build()).statusCode());
     }
