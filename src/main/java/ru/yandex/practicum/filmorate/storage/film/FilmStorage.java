@@ -4,12 +4,15 @@ import ru.yandex.practicum.filmorate.model.Film;
 
 import java.util.Collection;
 
+/*
+* Интерфейс описывает контракт для работы с хранилищем фильмов
+* */
 public interface FilmStorage {
-    public Collection<Film> getAll();
+    Collection<Film> getAll();
 
-    public Film create(Film newFilm);
+    Film create(Film newFilm);
 
-    public Film update(Film newFilm);
+    Film update(Film newFilm);
 
-    public boolean isExist(Integer filmId);
+    boolean isExist(Integer filmId);
 }

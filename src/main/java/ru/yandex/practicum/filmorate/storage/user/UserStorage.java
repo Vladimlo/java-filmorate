@@ -4,14 +4,17 @@ import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.Collection;
 
+/*
+ * Интерфейс описывает контракт для работы с хранилищем пользователей
+ * */
 public interface UserStorage {
-    public Collection<User> getAll();
+    Collection<User> getAll();
 
-    public User getUserById(Integer userId);
+    User getUserById(Integer userId);
 
-    public User create(User newUser);
+    User create(User newUser);
 
-    public User update(User newUser);
+    User update(User newUser);
 
-    public boolean isExist(Integer userId);
+    boolean isExist(Integer userId);
 }

@@ -2,12 +2,15 @@ package ru.yandex.practicum.filmorate.storage.like;
 
 import java.util.Set;
 
+/*
+ * Интерфейс описывает контракт для работы с хранилищем лайков
+ * */
 public interface LikeStorage {
-    public void addLike(Integer userId, Integer filmId);
+    void addLike(Integer userId, Integer filmId);
 
-    public void removeLike(Integer userId, Integer filmId);
+    void removeLike(Integer userId, Integer filmId);
 
-    public Set<Integer> getLikes(Integer filmId);
+    Set<Integer> getLikes(Integer filmId);
 
-    public boolean isExist(Integer userId, Integer filmId);
+    boolean isExist(Integer userId, Integer filmId);
 }

@@ -1,5 +1,6 @@
 package ru.yandex.practicum.filmorate.services;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.yandex.practicum.filmorate.exceptions.NotFoundException;
@@ -13,14 +14,10 @@ import java.util.Collection;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private final UserStorage userStorage;
     private final FriendsStorage friendsStorage;
-
-    public UserService(UserStorage userStorage, FriendsStorage friendsStorage) {
-        this.userStorage = userStorage;
-        this.friendsStorage = friendsStorage;
-    }
 
     public Collection<User> getAll() {
         return userStorage.getAll();
